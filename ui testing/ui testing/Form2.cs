@@ -16,5 +16,10 @@ namespace ui_testing
         {
             InitializeComponent();
         }
+
+        private void guna2CircleButton5_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
