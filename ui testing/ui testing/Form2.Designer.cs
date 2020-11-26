@@ -119,7 +119,7 @@
             this.guna2CircleButton4.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton4.HoverState.Parent = this.guna2CircleButton4;
             this.guna2CircleButton4.Image = global::ui_testing.Properties.Resources.data_analytics_flow_chart_symbol;
-            this.guna2CircleButton4.Location = new System.Drawing.Point(12, 218);
+            this.guna2CircleButton4.Location = new System.Drawing.Point(12, 205);
             this.guna2CircleButton4.Name = "guna2CircleButton4";
             this.guna2CircleButton4.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CircleButton4.ShadowDecoration.Parent = this.guna2CircleButton4;
@@ -137,7 +137,7 @@
             this.guna2CircleButton3.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton3.HoverState.Parent = this.guna2CircleButton3;
             this.guna2CircleButton3.Image = global::ui_testing.Properties.Resources.graph__1_;
-            this.guna2CircleButton3.Location = new System.Drawing.Point(12, 167);
+            this.guna2CircleButton3.Location = new System.Drawing.Point(12, 154);
             this.guna2CircleButton3.Name = "guna2CircleButton3";
             this.guna2CircleButton3.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CircleButton3.ShadowDecoration.Parent = this.guna2CircleButton3;
@@ -155,7 +155,7 @@
             this.guna2CircleButton2.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton2.HoverState.Parent = this.guna2CircleButton2;
             this.guna2CircleButton2.Image = global::ui_testing.Properties.Resources.celulas;
-            this.guna2CircleButton2.Location = new System.Drawing.Point(12, 116);
+            this.guna2CircleButton2.Location = new System.Drawing.Point(12, 103);
             this.guna2CircleButton2.Name = "guna2CircleButton2";
             this.guna2CircleButton2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CircleButton2.ShadowDecoration.Parent = this.guna2CircleButton2;
@@ -173,7 +173,7 @@
             this.guna2CircleButton1.ForeColor = System.Drawing.Color.White;
             this.guna2CircleButton1.HoverState.Parent = this.guna2CircleButton1;
             this.guna2CircleButton1.Image = global::ui_testing.Properties.Resources.world;
-            this.guna2CircleButton1.Location = new System.Drawing.Point(12, 65);
+            this.guna2CircleButton1.Location = new System.Drawing.Point(12, 52);
             this.guna2CircleButton1.Name = "guna2CircleButton1";
             this.guna2CircleButton1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.guna2CircleButton1.ShadowDecoration.Parent = this.guna2CircleButton1;
