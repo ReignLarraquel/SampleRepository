@@ -1,0 +1,25 @@
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\ui testing.exe.config
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\ui testing.exe
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\ui testing.pdb
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\Guna.UI2.dll
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.csprojAssemblyReference.cache
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui_testing.Form1.resources
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui_testing.Properties.Resources.resources
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.csproj.GenerateResource.cache
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.csproj.CopyComplete
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.exe
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui testing.pdb
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.dll
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.WinForms.dll
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.Wpf.dll
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.pdb
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.xml
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.WinForms.pdb
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.WinForms.xml
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.Wpf.pdb
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\LiveCharts.Wpf.xml
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui_testing.Form2.resources
+C:\Users\Lenovo\source\repos\ui testing\ui testing\bin\Debug\World.xml
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui_testing.Form3.resources
+C:\Users\Lenovo\source\repos\ui testing\ui testing\obj\Debug\ui_testing.UserControl1.resources
