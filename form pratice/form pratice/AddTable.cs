@@ -110,8 +110,8 @@ Never gonna tell a lie and hurt you */
         {
             
             string tableName = "SELECT * FROM information_schema.tables;";// sql commmand
-
-            string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";//string for connecting to the local database
+            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";//string for connecting to the local database
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
 

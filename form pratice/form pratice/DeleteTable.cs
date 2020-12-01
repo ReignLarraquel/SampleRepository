@@ -29,7 +29,8 @@ namespace form_pratice
         private void DeleteTable_Load(object sender, EventArgs e)
         {
             //This whole part basically adds all the table names in the combobox
-            string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
+            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
@@ -50,7 +51,8 @@ namespace form_pratice
         private void button1_Click(object sender, EventArgs e)
         {
             string tableName = "SELECT * FROM information_schema.tables;";
-            string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
+            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
 
