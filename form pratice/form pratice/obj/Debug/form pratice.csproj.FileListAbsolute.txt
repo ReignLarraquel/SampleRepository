@@ -11,3 +11,4 @@ C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form pratice.pdb
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.AddTable.resources
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.EditTableName.resources
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.DeleteTable.resources
+C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.TableFocus.resources

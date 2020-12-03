@@ -37,6 +37,7 @@ namespace form_pratice
                 TextBox textBox = new TextBox();
                 textBox.Text = reader["Table_Name"].ToString();//The text inside the textbox
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
+                textBox.DoubleClick += TextBox_DoubleClick;
                 flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel
             }
             reader.Close();//closes reader
@@ -60,10 +61,17 @@ namespace form_pratice
             aform.Show();// open EditTableName form
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        public void button3_Click(object sender, EventArgs e)
         {
             DeleteTable aform = new DeleteTable(this);
             aform.Show();
+        }
+
+        private void TextBox_DoubleClick(object sender, EventArgs e)
+        {
+            TableFocus aform = new TableFocus();
+            aform.Show();
+            this.Hide();
         }
     }
 }
