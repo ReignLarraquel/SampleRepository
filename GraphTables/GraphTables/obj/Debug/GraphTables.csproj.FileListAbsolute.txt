@@ -12,17 +12,3 @@ C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Create_
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Rename_Graph.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Delete_Graph.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.GraphFocus.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.exe.config
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.exe
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.pdb
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csprojAssemblyReference.cache
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Create_Graph.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Delete_Graph.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Form1.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.GraphFocus.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Properties.Resources.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Rename_Graph.resources
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csproj.GenerateResource.cache
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csproj.CoreCompileInputs.cache
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.exe
-C:\Users\Maku\Documents\GitHub\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.pdb

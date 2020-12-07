@@ -52,9 +52,13 @@ namespace GraphTables
             else if (GraphColumnName[2] == "Pie") chart1.Series[0].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
 
 
-            string tablevalues = "SELECT "+ GraphColumnName[0]+ "," + GraphColumnName[1]+" FROM "+ GRAPHDataName+";";
+            //string tablevalues = "SELECT "+ GraphColumnName+ ","+ GraphColumnName + " FROM " + GRAPHDataName + ";";
+            string tablevalues = "SELECT X,Y FROM DATA3;";
             SqlCommand command2 = new SqlCommand(tablevalues, connection);
             var reader2 = command2.ExecuteReader();
+
+            string c1 = GraphColumnName[0];
+            string c2 = GraphColumnName[1];
 
             chart1.ChartAreas[0].AxisX.Title = GraphColumnName[0];
             chart1.ChartAreas[0].AxisY.Title = GraphColumnName[1];
