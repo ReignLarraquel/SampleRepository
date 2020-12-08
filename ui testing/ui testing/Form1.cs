@@ -296,15 +296,29 @@ namespace ui_testing
             string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCC0_labyumarc123;User Id=DB_A6BCC0_labyumarc123_admin;Password=labyumarc123";
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
-            
+            foreach(object fruits in listBox1.SelectedItems)
+            {
+
+                string ddeletedItem = fruits.ToString();
+                string deleteItem = "DELETE FROM todo WHERE todolist = '@Xvalues'";
+                SqlParameter param1 = new SqlParameter("@Xvalues", ddeletedItem);
+                SqlCommand cmd = new SqlCommand(deleteItem, connection);
+                cmd.Parameters.Add(param1);
+                cmd.ExecuteNonQuery();
+                //"INSERT INTO todo (todolist) VALUES (@Xvalues)"
+                //SqlCommand command = new SqlCommand(deleteItem, connection);
+                //command.ExecuteNonQuery();
+            }
+            //string ddeletedItem = listBox1.SelectedItems.ToString();
+            //label12.Text = ddeletedItem;
+            //string deleteItem = "DELETE FROM todo WHERE todolist = " + ddeletedItem + " ;";
+            //SqlCommand command = new SqlCommand(deleteItem, connection);
+            //command.ExecuteNonQuery();
             for (int x = listBox1.SelectedIndices.Count-1 ; x >= 0; x--)
             {
                 int idx = listBox1.SelectedIndices[x];
                 listBox1.Items.RemoveAt(idx);
-                string ddeletedItem = ;
-                string deleteItem = "DELETE FROM todo WHERE todolist = " + ddeletedItem + " ;";
-                SqlCommand command = new SqlCommand(deleteItem, connection);
-                command.ExecuteNonQuery();
+               
             }
             connection.Close();
         }
