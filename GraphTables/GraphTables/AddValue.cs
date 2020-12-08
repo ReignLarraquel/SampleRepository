@@ -35,39 +35,11 @@ namespace GraphTables
             textBoxes2 = new TextBox[amount];//max amount of button
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (j == amount)
-            {
-                MessageBox.Show("Maximum of 100 values can be added at a time");
-                return;
-            }
-            else
-            { 
-            flowLayoutPanels2[j] = new FlowLayoutPanel();//instanstiation of a new flowlayoutpanel
-            flowLayoutPanels2[j].Size = new Size (240, 25);//size of the panel
-            flowLayoutPanel1.Controls.Add(flowLayoutPanels2[j]);// adds it to the main panel
 
-            textBoxes1[j] = new TextBox();//instansitation of textboxes1
-            textBoxes2[j] = new TextBox();
-            flowLayoutPanels2[j].Controls.Add(textBoxes1[j]);//adds
-            flowLayoutPanels2[j].Controls.Add(textBoxes2[j]);
-
-            buttons1[j] = new Button();
-            buttons1[j].Name = "button" + j.ToString();//buttona name
-            buttons1[j].Size = new Size(20, 20);//button size
-            buttons1[j].Text = "X";//button text
-            buttons1[j].Click += button_Click;// button property when clicked(Delete funtion)
-            flowLayoutPanels2[j].Controls.Add(buttons1[j]);//adds it to the panel
-
-                j++;//increment of the amount of sets
-            }
-            
-        }
         private void button_Click(object sender, EventArgs e)
         {
             var remove = (sender as Button).Name;//gets the button name
-            string removePanel = remove.Remove(0,6);//removes the "button" and just gets the number of the button
+            string removePanel = remove.Remove(0, 6);//removes the "button" and just gets the number of the button
             flowLayoutPanel1.Controls.Remove(flowLayoutPanels2[int.Parse(removePanel)]);
             j--;
         }
@@ -97,7 +69,7 @@ namespace GraphTables
             connection.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
             string addGraphTableName = Form1.DataName;
             string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
@@ -119,25 +91,25 @@ namespace GraphTables
             bool finish = false;
             for (int n = 0; n < j; n++)
             {
-            if (textBoxes1[n].Text == string.Empty || textBoxes2[n].Text == string.Empty) MessageBox.Show("Graph Values must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-            { 
-                string insertInto = "INSERT INTO [" + addGraphTableName + "] (" + GraphColumnName[0] + "," + GraphColumnName[1] + ") VALUES (@Xvalues,@Yvalues);";
-                SqlParameter param1 = new SqlParameter("@Xvalues", textBoxes1[n].Text);
-                SqlParameter param2 = new SqlParameter("@Yvalues", textBoxes2[n].Text);
-                SqlCommand cmd = new SqlCommand(insertInto, connection);
-                cmd.Parameters.Add(param1);
-                cmd.Parameters.Add(param2);
-                cmd.ExecuteNonQuery();
-                finish = true;
-            }
+                if (textBoxes1[n].Text == string.Empty || textBoxes2[n].Text == string.Empty) MessageBox.Show("Graph Values must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    string insertInto = "INSERT INTO [" + addGraphTableName + "] (" + GraphColumnName[0] + "," + GraphColumnName[1] + ") VALUES (@Xvalues,@Yvalues);";
+                    SqlParameter param1 = new SqlParameter("@Xvalues", textBoxes1[n].Text);
+                    SqlParameter param2 = new SqlParameter("@Yvalues", textBoxes2[n].Text);
+                    SqlCommand cmd = new SqlCommand(insertInto, connection);
+                    cmd.Parameters.Add(param1);
+                    cmd.Parameters.Add(param2);
+                    cmd.ExecuteNonQuery();
+                    finish = true;
+                }
             }
 
             if (finish)
-            { 
+            {
                 MessageBox.Show("Graph values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 flowLayoutPanel1.Controls.Clear();
-
+                
                 ////////////////////////////////////////////////
                 string GRAPHDataName = Form1.DataName;// THIS IS THE TABLE THAT THE USER SELECTED
                 _form.chart1.Series[0].Points.Clear();
@@ -161,6 +133,36 @@ namespace GraphTables
                 this.Close();
             }
             connection.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (j == amount)
+            {
+                MessageBox.Show("Maximum of 100 values can be added at a time");
+                return;
+            }
+            else
+            {
+                flowLayoutPanels2[j] = new FlowLayoutPanel();//instanstiation of a new flowlayoutpanel
+                flowLayoutPanels2[j].Size = new Size(240, 25);//size of the panel
+                flowLayoutPanel1.Controls.Add(flowLayoutPanels2[j]);// adds it to the main panel
+
+                textBoxes1[j] = new TextBox();//instansitation of textboxes1
+                textBoxes2[j] = new TextBox();
+                flowLayoutPanels2[j].Controls.Add(textBoxes1[j]);//adds
+                flowLayoutPanels2[j].Controls.Add(textBoxes2[j]);
+
+                buttons1[j] = new Button();
+                buttons1[j].Name = "button" + j.ToString();//buttona name
+                buttons1[j].Size = new Size(20, 20);//button size
+                buttons1[j].Text = "X";//button text
+                buttons1[j].Click += button_Click;// button property when clicked(Delete funtion)
+                flowLayoutPanels2[j].Controls.Add(buttons1[j]);//adds it to the panel
+
+                j++;//increment of the amount of sets
+            }
+
         }
     }
 }

@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddValue.Designer.cs">
+      <DependentUpon>AddValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Create Graph.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="Rename Graph.Designer.cs">
       <DependentUpon>Rename Graph.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddValue.resx">
+      <DependentUpon>AddValue.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Create Graph.resx">
       <DependentUpon>Create Graph.cs</DependentUpon>
     </EmbeddedResource>

@@ -58,6 +58,7 @@ namespace GraphTables
             this.button2.TabIndex = 3;
             this.button2.Text = "Add Values";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -83,13 +84,13 @@ namespace GraphTables
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(260, 106);
+            this.chart1.Location = new System.Drawing.Point(146, 12);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(506, 300);
+            this.chart1.Size = new System.Drawing.Size(642, 426);
             this.chart1.TabIndex = 6;
             this.chart1.Text = "chart1";
             // 
@@ -116,6 +117,6 @@ namespace GraphTables
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        public System.Windows.Forms.DataVisualization.Charting.Chart chart1;
     }
 }

@@ -53,25 +53,28 @@ namespace GraphTables
 
 
             //string tablevalues = "SELECT "+ GraphColumnName+ ","+ GraphColumnName + " FROM " + GRAPHDataName + ";";
-            string tablevalues = "SELECT X,Y FROM DATA3;";
+            string tablevalues = "SELECT ["+GraphColumnName[0]+"],["+GraphColumnName[1]+"] FROM ["+GRAPHDataName+"];";
             SqlCommand command2 = new SqlCommand(tablevalues, connection);
             var reader2 = command2.ExecuteReader();
-
-            string c1 = GraphColumnName[0];
-            string c2 = GraphColumnName[1];
 
             chart1.ChartAreas[0].AxisX.Title = GraphColumnName[0];
             chart1.ChartAreas[0].AxisY.Title = GraphColumnName[1];
             while (reader2.Read())
             {
-                string column1 = reader2["X"].ToString();
-                string column2 = reader2["Y"].ToString();
-                chart1.Series[0].Points.AddXY(double.Parse(column1),double.Parse(column2));
+                string column1 = reader2[GraphColumnName[0]].ToString();
+                string column2 = reader2[GraphColumnName[1]].ToString();
+                chart1.Series[0].Points.AddXY(column1,double.Parse(column2));
             }
             reader2.Close();
 
             connection.Close();
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddValue aform = new AddValue(this);
+            aform.Show();
         }
     }
 }

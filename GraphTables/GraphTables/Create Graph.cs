@@ -64,11 +64,17 @@ namespace GraphTables
                 TextBox textBox = new TextBox();
                 textBox.Text = textBox1.Text;//The name of the table name
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
+                textBox.DoubleClick += _form.TextBox_DoubleClick;
                 _form.flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel in form1
                 connection.Close();
                 this.Close();
                 MessageBox.Show("Table Created", "Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+
+        }
+
+        private void Create_Graph_Load(object sender, EventArgs e)
+        {
 
         }
     }

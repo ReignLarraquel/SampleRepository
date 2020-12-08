@@ -69,6 +69,7 @@ namespace GraphTables
                     TextBox textBox = new TextBox();
                     textBox.Text = reader2["Table_Name"].ToString();//The text inside the textbox
                     textBox.Name = "textBox" + i.ToString();// The property name of the textbox
+                    textBox.DoubleClick += _form.TextBox_DoubleClick;
                     _form.flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel
                 }
                 reader2.Close();

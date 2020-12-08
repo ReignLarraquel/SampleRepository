@@ -136,6 +136,7 @@ namespace GraphTables
             this.Controls.Add(this.comboBox1);
             this.Name = "Create_Graph";
             this.Text = "Create_Graph";
+            this.Load += new System.EventHandler(this.Create_Graph_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
