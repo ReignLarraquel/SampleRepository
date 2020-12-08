@@ -21,6 +21,16 @@ namespace ui_testing
         public Form1()
         {
             InitializeComponent();
+            string time = DateTime.Now.ToString("mm");
+            int hours = int.Parse(DateTime.Now.ToString("HH"));
+            if (hours >= 12)
+            {
+                hours -= 12;
+                Clock.Text = hours + " : " + time + "PM";
+            }
+
+            else Clock.Text = hours + " : " + time + "AM";
+
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
@@ -39,7 +49,6 @@ namespace ui_testing
             
             panel1.Show();
             int total_values = 154;
-            int y = 0;
             int x= 0;
             HtmlWeb web = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load("https://www.worldometers.info/coronavirus/");
@@ -47,7 +56,6 @@ namespace ui_testing
             LiveCharts.WinForms.GeoMap geomap = new LiveCharts.WinForms.GeoMap();
             geomap.Hoverable = true;
             Dictionary<string, double> dict = new Dictionary<string, double>();
-
             dict["US"] = int.Parse(nodes[total_values].InnerText.Replace(",", "")); x += 19;
             dict["IN"] = int.Parse(nodes[total_values+ x].InnerText.Replace(",", "")); x += 19;
             dict["BR"] = int.Parse(nodes[total_values+ x].InnerText.Replace(",", "")); x += 19;
@@ -225,6 +233,7 @@ namespace ui_testing
             geomap.Source = $"{Application.StartupPath}\\World.xml";
             panel1.Controls.Add(geomap);
             geomap.Dock = DockStyle.Fill;
+
             label2.Text = nodes[135].InnerText;
             label3.Text = nodes[136].InnerText;
             label4.Text = nodes[137].InnerText;
@@ -377,7 +386,15 @@ namespace ui_testing
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            
+            string time = DateTime.Now.ToString("mm");
+            int hours = int.Parse(DateTime.Now.ToString("HH"));
+            if (hours >= 12)
+            {
+                hours -= 12;
+                Clock.Text = hours + " : " + time + "PM";
+            }
+
+            else Clock.Text = hours + " : " + time + "AM";
         }
 
         private void guna2Panel1_MouseLeave(object sender, EventArgs e)
@@ -392,6 +409,42 @@ namespace ui_testing
 
         private void label9_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCC0_labyumarc123;User Id=DB_A6BCC0_labyumarc123_admin;Password=labyumarc123";
+            SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
+            connection.Open();//connectiong open
+
+            string deleteItem = "DELETE FROM todo WHERE nothing IS NULL";
+            SqlCommand cmd = new SqlCommand(deleteItem, connection);
+            cmd.ExecuteNonQuery();
+
+            foreach (object fruits in listBox1.SelectedItems)
+            {
+
+                string ddeletedItem = fruits.ToString();
+                string insertInto = "INSERT INTO todo (todolist) VALUES (@Xvalues)";
+                SqlParameter param1 = new SqlParameter("@Xvalues", ddeletedItem);
+                SqlCommand cmd2 = new SqlCommand(insertInto, connection);
+                cmd2.Parameters.Add(param1);
+                cmd2.ExecuteNonQuery();
+            }
+            connection.Close();
+            listBox1.Items.Remove(listBox1.SelectedItem);
+
+            //var text = (sender as ListBox).Text;//Gets what was double clicked
+            //string a = text.ToString();
+            //string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCC0_labyumarc123;User Id=DB_A6BCC0_labyumarc123_admin;Password=labyumarc123";
+            //SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
+            //connection.Open();//connectiong open
+
+            //string deleteItem = "DELETE FROM todo WHERE todolist = "+ a+"";
+            //SqlCommand cmd = new SqlCommand(deleteItem, connection);
+            //cmd.ExecuteNonQuery();
+            //listBox1.Items.Remove(listBox1.SelectedItem);
 
         }
     }

@@ -62,7 +62,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.Clock = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.SuspendLayout();
@@ -225,21 +226,25 @@
             this.guna2Panel3.Controls.Add(this.guna2CircleButton1);
             this.guna2Panel3.Controls.Add(this.label1);
             this.guna2Panel3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.guna2Panel3.Location = new System.Drawing.Point(929, 58);
+            this.guna2Panel3.Location = new System.Drawing.Point(900, 58);
             this.guna2Panel3.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.ShadowDecoration.Parent = this.guna2Panel3;
-            this.guna2Panel3.Size = new System.Drawing.Size(281, 273);
+            this.guna2Panel3.Size = new System.Drawing.Size(310, 298);
             this.guna2Panel3.TabIndex = 11;
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 29;
             this.listBox1.Location = new System.Drawing.Point(0, 40);
             this.listBox1.Name = "listBox1";
+            this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(264, 173);
+            this.listBox1.Size = new System.Drawing.Size(307, 149);
             this.listBox1.TabIndex = 19;
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
             // guna2CircleButton2
             // 
@@ -322,10 +327,11 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(82, 15);
+            this.panel1.Location = new System.Drawing.Point(83, 49);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(812, 416);
             this.panel1.TabIndex = 12;
+            this.panel1.Visible = false;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
@@ -391,7 +397,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1500;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
             // label8
@@ -435,15 +441,22 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "label11";
             // 
-            // label12
+            // panel2
             // 
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label12.Location = new System.Drawing.Point(968, 368);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(202, 74);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "label12";
+            this.panel2.Location = new System.Drawing.Point(83, 52);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(751, 410);
+            this.panel2.TabIndex = 22;
+            // 
+            // Clock
+            // 
+            this.Clock.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clock.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.Clock.Location = new System.Drawing.Point(881, 712);
+            this.Clock.Name = "Clock";
+            this.Clock.Size = new System.Drawing.Size(165, 68);
+            this.Clock.TabIndex = 23;
+            this.Clock.Text = "label12";
             // 
             // Form1
             // 
@@ -451,7 +464,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(21)))), ((int)(((byte)(21)))));
             this.ClientSize = new System.Drawing.Size(1242, 811);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.Clock);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
@@ -463,9 +477,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2Panel3);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.guna2ToggleSwitch1);
             this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
@@ -513,7 +527,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label Clock;
     }
 }
 
