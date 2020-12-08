@@ -14,7 +14,7 @@ namespace form_pratice
     public partial class Form1 : Form
     {
         public static int i = 0;// this is for the number of textbox
-
+        public static string NameData = "";
         public Form1()
         {
             InitializeComponent();
@@ -70,6 +70,8 @@ namespace form_pratice
         private void TextBox_DoubleClick(object sender, EventArgs e)
         {
             TableFocus aform = new TableFocus();
+            var text = (sender as TextBox).Text;//Gets what was double clicked
+            NameData = text.ToString();//Saves the thing that was double clicked
             aform.Show();
             this.Hide();
         }

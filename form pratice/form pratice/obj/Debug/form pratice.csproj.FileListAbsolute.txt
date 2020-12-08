@@ -12,3 +12,31 @@ C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.AddT
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.EditTableName.resources
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.DeleteTable.resources
 C:\Users\Maku\source\repos\form pratice\form pratice\obj\Debug\form_pratice.TableFocus.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.exe.config
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.exe
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.pdb
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csprojAssemblyReference.cache
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.AddTable.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.DeleteTable.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.EditTableName.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.Form1.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.Properties.Resources.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.TableFocus.resources
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csproj.GenerateResource.cache
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csproj.CoreCompileInputs.cache
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.exe
+C:\Users\SHAO ESTEBAN\Desktop\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.pdb
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.exe.config
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.exe
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\bin\Debug\form pratice.pdb
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csprojAssemblyReference.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.AddTable.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.DeleteTable.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.EditTableName.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.Form1.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.Properties.Resources.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.TableFocus.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csproj.GenerateResource.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csproj.CoreCompileInputs.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.exe
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.pdb
