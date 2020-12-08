@@ -13,7 +13,6 @@ namespace form_pratice
     public partial class TableFocus : Form
     {
         public static int j = 0;
-
         public TableFocus()
         {
             InitializeComponent();
@@ -33,9 +32,7 @@ namespace form_pratice
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-
-            // a button to add a new category
+            // a button to add a new column
 
             TextBox textbox1 = new TextBox(); // creates a new() for textbox (for Categoryname)
             TextBox textbox2 = new TextBox(); // creates a new() for textbox (for Values)
@@ -111,18 +108,21 @@ namespace form_pratice
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TextBox textbox1 = new TextBox(); // creates a new() for textbox (for Categoryname)
-            TextBox textbox2 = new TextBox(); // creates a new() for textbox (for Values)
-
+            /*
             string tablename = Form1.NameData;
             int valuestablenum = int.Parse(textbox2.Name.Split('_')[1]);
             TextBox txt = (TextBox)ColumnPanel.Controls.Find("txt_" + valuestablenum, true)[0];
             string connect = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
             SqlConnection connection = new SqlConnection(connect);
             connection.Open();
-
-            string tableInsert = "INSERT INTO " + tablename;
-            string valueInsert = "VALUES (" + ")";
+            foreach (TextBox bx in ColumnPanel.Controls.OfType<TextBox>())
+            {
+                string columnName = textbox1.Text;
+                string valuesName = textbox2.Text;
+                string tableInsert = "ALTER TABLE " + tablename + " ADD " + columnName +" TEXT;";
+            }
+            connection.Close();
+            */
         }
     }
 }
