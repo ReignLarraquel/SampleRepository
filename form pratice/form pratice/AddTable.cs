@@ -160,7 +160,6 @@ Never gonna tell a lie and hurt you */
             command.Parameters.Add(param1);
             command.ExecuteNonQuery();
                 
-               
                 int i = Form1.i; // this will get the current amount of I in the form1 where I is the number of tables
                 i++;//Increment
                 TextBox textBox = new TextBox();

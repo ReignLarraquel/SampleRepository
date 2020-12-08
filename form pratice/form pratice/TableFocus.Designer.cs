@@ -36,10 +36,9 @@ namespace form_pratice
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DltBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ValuesPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ColumnPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.NamePanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -68,19 +67,18 @@ namespace form_pratice
             // 
             // NamePanel
             // 
-            this.NamePanel.Controls.Add(this.label2);
             this.NamePanel.Controls.Add(this.label3);
             this.NamePanel.Controls.Add(this.label1);
             this.NamePanel.Location = new System.Drawing.Point(94, 12);
             this.NamePanel.Name = "NamePanel";
-            this.NamePanel.Size = new System.Drawing.Size(520, 41);
+            this.NamePanel.Size = new System.Drawing.Size(269, 41);
             this.NamePanel.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(426, 19);
+            this.label3.Location = new System.Drawing.Point(189, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 16);
             this.label3.TabIndex = 2;
@@ -99,12 +97,12 @@ namespace form_pratice
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.vScrollBar1);
             this.panel1.Controls.Add(this.DltBtnPanel);
-            this.panel1.Controls.Add(this.ValuesPanel);
             this.panel1.Controls.Add(this.ColumnPanel);
             this.panel1.Location = new System.Drawing.Point(93, 59);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(521, 392);
+            this.panel1.Size = new System.Drawing.Size(270, 392);
             this.panel1.TabIndex = 0;
             // 
             // DltBtnPanel
@@ -113,21 +111,10 @@ namespace form_pratice
             this.DltBtnPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DltBtnPanel.AutoSize = true;
-            this.DltBtnPanel.Location = new System.Drawing.Point(443, 4);
+            this.DltBtnPanel.Location = new System.Drawing.Point(204, 4);
             this.DltBtnPanel.Name = "DltBtnPanel";
             this.DltBtnPanel.Size = new System.Drawing.Size(35, 378);
             this.DltBtnPanel.TabIndex = 8;
-            // 
-            // ValuesPanel
-            // 
-            this.ValuesPanel.AllowDrop = true;
-            this.ValuesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ValuesPanel.AutoSize = true;
-            this.ValuesPanel.Location = new System.Drawing.Point(160, 3);
-            this.ValuesPanel.Name = "ValuesPanel";
-            this.ValuesPanel.Size = new System.Drawing.Size(261, 378);
-            this.ValuesPanel.TabIndex = 7;
             // 
             // ColumnPanel
             // 
@@ -135,7 +122,7 @@ namespace form_pratice
             this.ColumnPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ColumnPanel.AutoSize = true;
-            this.ColumnPanel.Location = new System.Drawing.Point(4, 4);
+            this.ColumnPanel.Location = new System.Drawing.Point(3, 4);
             this.ColumnPanel.Name = "ColumnPanel";
             this.ColumnPanel.Size = new System.Drawing.Size(150, 378);
             this.ColumnPanel.TabIndex = 6;
@@ -151,21 +138,19 @@ namespace form_pratice
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label2
+            // vScrollBar1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(253, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Values";
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(253, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 392);
+            this.vScrollBar1.TabIndex = 9;
             // 
             // TableFocus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(626, 450);
+            this.ClientSize = new System.Drawing.Size(375, 455);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NamePanel);
@@ -195,8 +180,7 @@ namespace form_pratice
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.FlowLayoutPanel ColumnPanel;
-        private System.Windows.Forms.FlowLayoutPanel ValuesPanel;
         private System.Windows.Forms.FlowLayoutPanel DltBtnPanel;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }

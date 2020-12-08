@@ -13,10 +13,20 @@ namespace form_pratice
     public partial class TableFocus : Form
     {
         public static int j = 0;
+        private TextBox[] textBoxes1; //array of textbox
+        private int amount = 100; // The amount of new values allowed per adding
+
         public TableFocus()
         {
             InitializeComponent();
+            Panel_Text_Button();
         }
+
+        private void Panel_Text_Button()
+        {
+            textBoxes1 = new TextBox[amount];//max amount of textbox
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -34,33 +44,24 @@ namespace form_pratice
         {
             // a button to add a new column
 
-            TextBox textbox1 = new TextBox(); // creates a new() for textbox (for Categoryname)
-            TextBox textbox2 = new TextBox(); // creates a new() for textbox (for Values)
+            textBoxes1[j] = new TextBox();
 
             int count = ColumnPanel.Controls.OfType<TextBox>().ToList().Count; // counts the textboxes in categorypanel
-            int count1 = ValuesPanel.Controls.OfType<TextBox>().ToList().Count; // counts the textboxes in valuespanel
 
-            textbox1.Size = new System.Drawing.Size(140, 20);
-            textbox2.Size = new System.Drawing.Size(200, 20);
+            textBoxes1[j].Size = new System.Drawing.Size(140, 20);
 
             if (count >= j)
             {
-            textbox1.Name = "txt_" + (count + 1); // name of the textbox when created
-            textbox2.Name = "txtValue_" + (count1 + 1);
+                textBoxes1[j].Name = "txt_" + (count + 1); // name of the textbox when created
             }
             else if (j > count)
             {
-                textbox1.Name = "txt_" + (j + 1);
-                textbox2.Name = "txtValue_" + (j + 1);
+                textBoxes1[j].Name = "txt_" + (j + 1);
             }
 
-            ColumnPanel.Controls.Add(textbox1); // adds the textbox to the panel
-            ValuesPanel.Controls.Add(textbox2);
+            ColumnPanel.Controls.Add(textBoxes1[j]); // adds the textbox to the panel
 
             j++;
-
-            //textbox1.Text = textbox1.Name;
-            //textbox2.Text = textbox2.Name;
 
             Button button = new Button();
             button.Size = new System.Drawing.Size(20, 20);
@@ -85,7 +86,6 @@ namespace form_pratice
             int index = int.Parse(button.Name.Split('_')[1]); //Determine the Index of the Button.
 
             ColumnPanel.Controls.Remove(ColumnPanel.Controls.Find("txt_" + index, true)[0]); //Find the TextBox using Index and remove it.
-            ValuesPanel.Controls.Remove(ValuesPanel.Controls.Find("txtValue_" + index, true)[0]);
 
             DltBtnPanel.Controls.Remove(button); //Remove the Button.
 
@@ -95,34 +95,46 @@ namespace form_pratice
                 if (controlIndex > index) //Rearranging the Location controls.
                 {
                     TextBox txt = (TextBox)ColumnPanel.Controls.Find("txt_" + controlIndex, true)[0];
-                    TextBox txt1 = (TextBox)ValuesPanel.Controls.Find("txtValue_" + controlIndex, true)[0];
                     btn.Top = btn.Top - 25;
                     txt.Top = txt.Top - 25;
-                    txt1.Top = txt1.Top - 25;
                 }
             }
+            j--;
             ColumnPanel.Refresh();
-            ValuesPanel.Refresh();
             DltBtnPanel.Refresh();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            /*
             string tablename = Form1.NameData;
-            int valuestablenum = int.Parse(textbox2.Name.Split('_')[1]);
-            TextBox txt = (TextBox)ColumnPanel.Controls.Find("txt_" + valuestablenum, true)[0];
-            string connect = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
+            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
             SqlConnection connection = new SqlConnection(connect);
             connection.Open();
-            foreach (TextBox bx in ColumnPanel.Controls.OfType<TextBox>())
+
+
+
+            bool finish = false;
+            for (int n = 0; n < j; n++)
             {
-                string columnName = textbox1.Text;
-                string valuesName = textbox2.Text;
-                string tableInsert = "ALTER TABLE " + tablename + " ADD " + columnName +" TEXT;";
+                if (textBoxes1[n].Text == string.Empty) MessageBox.Show("Values must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    string alterTable = "ALTER TABLE [" + tablename + "] ADD [" + textBoxes1[n].Text + "] TEXT";
+                    SqlParameter param1 = new SqlParameter(tablename, textBoxes1[n].Text);
+                    SqlCommand command = new SqlCommand(alterTable, connection);
+                    command.Parameters.Add(param1);
+                    command.ExecuteNonQuery();
+                    finish = true;
+                }
+            }
+            if (finish)
+            {
+                MessageBox.Show("Columns and Values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ColumnPanel.Controls.Clear();
+                DltBtnPanel.Controls.Clear();
             }
             connection.Close();
-            */
+            j = 0;
         }
     }
 }
