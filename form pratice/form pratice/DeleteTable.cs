@@ -29,7 +29,7 @@ namespace form_pratice
         private void DeleteTable_Load(object sender, EventArgs e)
         {
             //This whole part basically adds all the table names in the combobox
-            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";//online database
             //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -51,7 +51,7 @@ namespace form_pratice
         private void button1_Click(object sender, EventArgs e)
         {
             string tableName = "SELECT * FROM information_schema.tables;";
-            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";//online database
             //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";
             SqlConnection connection = new SqlConnection(connectionString);
             connection.Open();
@@ -76,6 +76,7 @@ namespace form_pratice
                 TextBox textBox = new TextBox();
                 textBox.Text = reader2["Table_Name"].ToString();//The text inside the textbox
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
+                textBox.DoubleClick += _form.TextBox_DoubleClick;
                 _form.flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel
             }
             reader2.Close();

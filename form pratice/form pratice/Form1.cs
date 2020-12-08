@@ -23,7 +23,7 @@ namespace form_pratice
         private void Form1_Load(object sender, EventArgs e)
         {
             string tableName = "SELECT * FROM information_schema.tables;";// sql commmand
-            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
             //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";//string for connecting to the local database
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
@@ -67,7 +67,7 @@ namespace form_pratice
             aform.Show();
         }
 
-        private void TextBox_DoubleClick(object sender, EventArgs e)
+        public void TextBox_DoubleClick(object sender, EventArgs e)
         {
             TableFocus aform = new TableFocus();
             var text = (sender as TextBox).Text;//Gets what was double clicked

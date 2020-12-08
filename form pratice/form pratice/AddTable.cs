@@ -110,7 +110,7 @@ Never gonna tell a lie and hurt you */
         {
             
             string tableName = "SELECT * FROM information_schema.tables;";// sql commmand
-            string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";//online database
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";//online database
             //string connectionString = "Data Source = (localdb)\\MSSQLLocalDB;Initial Catalog = TestingStuff;Integrated Security = True;";//string for connecting to the local database
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
@@ -166,6 +166,7 @@ Never gonna tell a lie and hurt you */
                 TextBox textBox = new TextBox();
                 textBox.Text = textBox1.Text;//The name of the table name
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
+                textBox.DoubleClick += _form.TextBox_DoubleClick;
                 _form.flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel in form1
                 connection.Close();
             this.Close();
