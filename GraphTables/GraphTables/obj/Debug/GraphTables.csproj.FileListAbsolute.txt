@@ -13,3 +13,4 @@ C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Rename_
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Delete_Graph.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.GraphFocus.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.AddValue.resources
+C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.DeleteValue.resources

@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace GraphTables
 {
-    public partial class AddValue : Form
+    public partial class DeleteValue : Form
     {
         private static int j = 0;//j is for amount of set of text,panels, and button per value
         private FlowLayoutPanel[] flowLayoutPanels2;// array of flowlayoutpanel
@@ -20,12 +20,11 @@ namespace GraphTables
         private TextBox[] textBoxes2;//array of textbox
         private int amount = 100; // The amount of new values allowed per adding
         private GraphFocus _form;
-        public AddValue(GraphFocus form)
+        public DeleteValue(GraphFocus form)
         {
             _form = form;
             InitializeComponent();
-            Panel_Text_Button();//decleration of a new flowlayoutpanel
-
+            Panel_Text_Button();
         }
         private void Panel_Text_Button()
         {
@@ -35,23 +34,14 @@ namespace GraphTables
             textBoxes2 = new TextBox[amount];//max amount of button
         }
 
-
-        private void button_Click(object sender, EventArgs e)
+        private void DeleteValue_Load(object sender, EventArgs e)
         {
-            var remove = (sender as Button).Name;//gets the button name
-            string removePanel = remove.Remove(0, 6);//removes the "button" and just gets the number of the button
-            flowLayoutPanel1.Controls.Remove(flowLayoutPanels2[int.Parse(removePanel)]);
-            j--;
-        }
-
-        private void AddValue_Load(object sender, EventArgs e)
-        {
-            string addGraphTableName = Form1.DataName;
+            string GraphTableName = Form1.DataName;
             string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
 
-            string tableName = "SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'" + addGraphTableName + "\';";//check for the COLUMN NAMES of the table
+            string tableName = "SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'" + GraphTableName + "\';";//check for the COLUMN NAMES of the table
             SqlCommand command = new SqlCommand(tableName, connection);
             var reader = command.ExecuteReader();
 
@@ -66,17 +56,12 @@ namespace GraphTables
 
             label1.Text = GraphColumnName[0];
             label2.Text = GraphColumnName[1];
-            connection.Close();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (j == amount)
-            {
-                MessageBox.Show("Maximum of 100 values can be added at a time");
-                return;
-            }
-            else
+            string tablevalues = "SELECT [" + GraphColumnName[0] + "],[" + GraphColumnName[1] + "] FROM \"" + GraphTableName + "\";";
+            SqlCommand command2 = new SqlCommand(tablevalues, connection);
+            var reader2 = command2.ExecuteReader();
+
+            while (reader2.Read())
             {
                 flowLayoutPanels2[j] = new FlowLayoutPanel();//instanstiation of a new flowlayoutpanel
                 flowLayoutPanels2[j].Size = new Size(240, 25);//size of the panel
@@ -87,6 +72,9 @@ namespace GraphTables
                 flowLayoutPanels2[j].Controls.Add(textBoxes1[j]);//adds
                 flowLayoutPanels2[j].Controls.Add(textBoxes2[j]);
 
+                textBoxes1[j].Text = reader2[GraphColumnName[0]].ToString();
+                textBoxes2[j].Text = reader2[GraphColumnName[1]].ToString();
+
                 buttons1[j] = new Button();
                 buttons1[j].Name = "button" + j.ToString();//buttona name
                 buttons1[j].Size = new Size(20, 20);//button size
@@ -96,22 +84,27 @@ namespace GraphTables
 
                 j++;//increment of the amount of sets
             }
+            reader2.Close();
 
+            connection.Close();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void button_Click(object sender, EventArgs e)
         {
-
+            var remove = (sender as Button).Name;//gets the button name
+            string removePanel = remove.Remove(0, 6);//removes the "button" and just gets the number of the button
+            flowLayoutPanel1.Controls.Remove(flowLayoutPanels2[int.Parse(removePanel)]);
+            j--;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string addGraphTableName = Form1.DataName;
+            string GraphTableName = Form1.DataName;
             string connectionString = "Data Source=sql5053.site4now.net;Initial Catalog=DB_A6B6E6_Data;User Id=DB_A6B6E6_Data_admin;Password=abc123456;";
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
 
-            string tableName = "SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'" + addGraphTableName + "\';";//check for the COLUMN NAMES of the table
+            string tableName = "SELECT TABLE_NAME, COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = \'" + GraphTableName + "\';";//check for the COLUMN NAMES of the table
             SqlCommand command = new SqlCommand(tableName, connection);
             var reader = command.ExecuteReader();
 
@@ -123,34 +116,37 @@ namespace GraphTables
                 i++;
             }
             reader.Close();
+
+            string dropTable = "DELETE FROM ["+GraphTableName+"] WHERE "+GraphColumnName[2]+ " IS NULL;";
+            var command2 = new SqlCommand(dropTable, connection);
+            command2.ExecuteNonQuery();
+
             bool finish = false;
             for (int n = 0; n < j; n++)
             {
                 if (textBoxes1[n].Text == string.Empty || textBoxes2[n].Text == string.Empty) MessageBox.Show("Graph Values must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
-                    string insertInto = "INSERT INTO [" + addGraphTableName + "] ([" + GraphColumnName[0] + "],[" + GraphColumnName[1] + "]) VALUES (@Xvalues,@Yvalues);";
+                    string insertInto = "INSERT INTO [" + GraphTableName + "] ([" + GraphColumnName[0] + "],[" + GraphColumnName[1] + "]) VALUES (@Xvalues,@Yvalues);";
                     SqlParameter param1 = new SqlParameter("@Xvalues", textBoxes1[n].Text);
                     SqlParameter param2 = new SqlParameter("@Yvalues", textBoxes2[n].Text);
                     SqlCommand cmd = new SqlCommand(insertInto, connection);
                     cmd.Parameters.Add(param1);
                     cmd.Parameters.Add(param2);
                     cmd.ExecuteNonQuery();
-                    finish = true;
                 }
+                    finish = true;
             }
-
             if (finish)
             {
-                MessageBox.Show("Graph values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Graph values successfully edited", "Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 flowLayoutPanel1.Controls.Clear();
 
-                ////////////////////////////////////////////////
                 string GRAPHDataName = Form1.DataName;// THIS IS THE TABLE THAT THE USER SELECTED
                 _form.chart1.Series[0].Points.Clear();
                 string tablevalues = "SELECT [" + GraphColumnName[0] + "],[" + GraphColumnName[1] + "] FROM \"" + GRAPHDataName + "\";";
-                SqlCommand command2 = new SqlCommand(tablevalues, connection);
-                var reader2 = command2.ExecuteReader();
+                SqlCommand command3 = new SqlCommand(tablevalues, connection);
+                var reader2 = command3.ExecuteReader();
 
                 _form.chart1.ChartAreas[0].AxisX.Title = GraphColumnName[0];
                 _form.chart1.ChartAreas[0].AxisY.Title = GraphColumnName[1];
@@ -167,6 +163,7 @@ namespace GraphTables
                 j = 0;
                 this.Close();
             }
+
             connection.Close();
         }
     }

@@ -55,7 +55,7 @@ namespace GraphTables
             else if (!tableData.Contains(textBox1.Text))//If not then it will add table
             {
                 string graph = comboBox1.Text;
-                string creatingGraph = "CREATE TABLE " + textBox1.Text + "("+textBox2.Text+" VARCHAR,"+textBox3.Text+" VARCHAR,"+graph+" VARCHAR);";// create graph sql string
+                string creatingGraph = "CREATE TABLE [" + textBox1.Text + "](["+textBox2.Text+"] TEXT,["+textBox3.Text+"] TEXT,"+graph+" TEXT);";// create graph sql string
                 var cmd = new SqlCommand(creatingGraph, connection);// creating new table in the database
                 cmd.ExecuteNonQuery();//excute above^^
 

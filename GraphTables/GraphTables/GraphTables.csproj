@@ -65,6 +65,12 @@
     <Compile Include="Delete Graph.Designer.cs">
       <DependentUpon>Delete Graph.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteValue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteValue.Designer.cs">
+      <DependentUpon>DeleteValue.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Delete Graph.resx">
       <DependentUpon>Delete Graph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteValue.resx">
+      <DependentUpon>DeleteValue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

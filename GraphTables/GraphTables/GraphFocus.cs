@@ -76,5 +76,11 @@ namespace GraphTables
             AddValue aform = new AddValue(this);
             aform.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            DeleteValue aform = new DeleteValue(this);
+            aform.Show();
+        }
     }
 }
