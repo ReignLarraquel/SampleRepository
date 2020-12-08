@@ -241,7 +241,7 @@ namespace ui_testing
 
             while (reader.Read())//Puts the name of the tables in the database and adds a textbox in the flow panel
             {
-                listBox1.Items.Add(reader["todo"]);
+                listBox1.Items.Add(reader["todolist"]);
 
             }
             reader.Close();//closes reader
@@ -272,7 +272,7 @@ namespace ui_testing
             connection.Open();//connectiong open
 
                
-                    string insertInto = "INSERT INTO todo (todo) VALUES (@Xvalues)";
+                    string insertInto = "INSERT INTO todo (todolist) VALUES (@Xvalues)";
                     SqlParameter param1 = new SqlParameter("@Xvalues", textBox1.Text);
                     SqlCommand cmd = new SqlCommand(insertInto, connection);
                     cmd.Parameters.Add(param1);                   
@@ -299,12 +299,10 @@ namespace ui_testing
             
             for (int x = listBox1.SelectedIndices.Count-1 ; x >= 0; x--)
             {
-               
                 int idx = listBox1.SelectedIndices[x];
-                
                 listBox1.Items.RemoveAt(idx);
-                string ddeletedItem = listBox1.SelectedItem.ToString() ;
-                string deleteItem = "DELETE FROM todo WHERE todo = '" + ddeletedItem + "';";
+                string ddeletedItem = ;
+                string deleteItem = "DELETE FROM todo WHERE todolist = " + ddeletedItem + " ;";
                 SqlCommand command = new SqlCommand(deleteItem, connection);
                 command.ExecuteNonQuery();
             }
