@@ -14,3 +14,19 @@ C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.Delete_
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.GraphFocus.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.AddValue.resources
 C:\Users\Maku\source\repos\GraphTables\GraphTables\obj\Debug\GraphTables.DeleteValue.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.exe.config
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.exe
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\bin\Debug\GraphTables.pdb
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csprojAssemblyReference.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.AddValue.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Create_Graph.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Delete_Graph.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.DeleteValue.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Form1.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.GraphFocus.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Properties.Resources.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.Rename_Graph.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csproj.GenerateResource.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.csproj.CoreCompileInputs.cache
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.exe
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\GraphTables\GraphTables\obj\Debug\GraphTables.pdb
