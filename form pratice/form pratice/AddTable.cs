@@ -133,7 +133,7 @@ Never gonna tell a lie and hurt you */
             reader2.Close();          
             }
 
-            string creatingTable = "CREATE TABLE test (Category1 varchar);";//sql command 'test' is a temp name for the table later change
+            string creatingTable = "CREATE TABLE test (Category1 TEXT);";//sql command 'test' is a temp name for the table later change
             var cmd = new SqlCommand(creatingTable, connection);// creating new table in the database
             cmd.ExecuteNonQuery();//excute above^^
 

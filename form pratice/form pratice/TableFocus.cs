@@ -43,9 +43,8 @@ namespace form_pratice
 
         private void TableFocus_Load(object sender, EventArgs e)
         {
-            int count = panel1.Controls.OfType<TextBox>().ToList().Count;
-            i = count;
-            j = count;
+            i = 0;
+            j = 0;
             button3.Enabled = false;
             string tablename = Form1.NameData;
             string columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tablename + "'ORDER BY ORDINAL_POSITION";
@@ -84,7 +83,7 @@ namespace form_pratice
             textBoxes1[j] = new TextBox();
 
             textBoxes1[j].Size = new System.Drawing.Size(140, 20);
-            textBoxes1[j].Name = "txt_" + (j+1);
+            textBoxes1[j].Name = "txt_" + (j + 1);
 
 
             ColumnPanel.Controls.Add(textBoxes1[j]); // adds the textbox to the panel
@@ -94,10 +93,13 @@ namespace form_pratice
 
             Button button = new Button();
             button.Size = new System.Drawing.Size(20, 20);
-            button.Name = "btnDelete_" + (j-1);
+            button.Name = "btnDelete_" + (j - 1);
             button.Text = "X";
             button.Click += new System.EventHandler(this.btnDelete_Click);
             DltBtnPanel.Controls.Add(button);
+
+            ColumnPanel.Refresh();
+            DltBtnPanel.Refresh();
         }
 
         public void columnDC(object sender, EventArgs e)
@@ -107,6 +109,8 @@ namespace form_pratice
             var text = (sender as TextBox).Text;
             string tablename = Form1.NameData;
             NameColumn = text.ToString();
+            ColumnPanel.Refresh();
+            DltBtnPanel.Refresh();
             showdata();
         }
 
@@ -129,19 +133,19 @@ namespace form_pratice
             int index = int.Parse(button.Name.Split('_')[1]); //Determine the Index of the Button.
             string columnname = textBoxes1[index - 1].Text;
             string tablename = Form1.NameData;
-            string columnsdlt = "ALTER TABLE [" + tablename + "] DROP COLUMN [" + columnname+"]";
+            string columnsdlt = "ALTER TABLE [" + tablename + "] DROP COLUMN [" + columnname + "]";
             string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
             var dltcolumn = new SqlCommand(columnsdlt, connection);
             dltcolumn.ExecuteReader();
-            ColumnPanel.Controls.Remove(ColumnPanel.Controls.Find(textBoxes1[index-1].Name, true)[0]); //Find the TextBox using Index and remove it.
+            ColumnPanel.Controls.Remove(ColumnPanel.Controls.Find(textBoxes1[index - 1].Name, true)[0]); //Find the TextBox using Index and remove it.
 
             DltBtnPanel.Controls.Remove(button); //Remove the Button.
             j--;
+            connection.Close();//closses connection
             ColumnPanel.Refresh();
             DltBtnPanel.Refresh();
-            connection.Close();//closses connection
             showdata();
         }
 
@@ -178,12 +182,12 @@ namespace form_pratice
             }
             if (finish)
             {
-                MessageBox.Show("Columns and Values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Columns successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 connection.Close();
                 j = 0;
-                Form TableFocus = new TableFocus();
-                this.Close();
-                TableFocus.Show();
+                ColumnPanel.Refresh();
+                DltBtnPanel.Refresh();
+                showdata();
             }
         }
         public void showdata()
@@ -198,5 +202,39 @@ namespace form_pratice
             dataGridView1.DataSource = dt;
             connection.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string tablename = Form1.NameData;
+            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+            SqlConnection connection = new SqlConnection(connect);
+            connection.Open();
+
+            string columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tablename + "'ORDER BY ORDINAL_POSITION";
+            SqlCommand cmd = new SqlCommand(columns, connection);
+            var reader = cmd.ExecuteReader();
+            string[] tableColumnName = new string[100];
+            while (reader.Read())
+            {
+                tableColumnName[i] = reader["COLUMN_NAME"].ToString();
+                i++;
+            }
+            reader.Close();
+            for (int c = 0; c <= dataGridView1.Rows.Count-1; c++)
+            {
+                for (int r = 0; r <= i - 2; r++)
+                {
+                    string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+                    SqlConnection con = new SqlConnection(connectionString);
+                    string addvalues = "INSERT INTO [" + tablename + "] ([" + textBoxes1[r].Text + "]) VALUES ('" + dataGridView1.Rows[c].Cells[r].Value + "')";
+                    SqlCommand command = new SqlCommand(addvalues, connection);
+                    command.ExecuteNonQuery();
+                }
+            }
+            MessageBox.Show("Values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            connection.Close();
+            showdata();
+        }
     }
-}
+}   
+    
