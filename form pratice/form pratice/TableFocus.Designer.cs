@@ -35,12 +35,14 @@ namespace form_pratice
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.DltBtnPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.ColumnPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NamePanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -105,6 +107,14 @@ namespace form_pratice
             this.panel1.Size = new System.Drawing.Size(270, 392);
             this.panel1.TabIndex = 0;
             // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(253, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 392);
+            this.vScrollBar1.TabIndex = 9;
+            // 
             // DltBtnPanel
             // 
             this.DltBtnPanel.AllowDrop = true;
@@ -138,19 +148,22 @@ namespace form_pratice
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // vScrollBar1
+            // dataGridView1
             // 
-            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.vScrollBar1.Location = new System.Drawing.Point(253, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 392);
-            this.vScrollBar1.TabIndex = 9;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(370, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(480, 428);
+            this.dataGridView1.TabIndex = 5;
             // 
             // TableFocus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 455);
+            this.ClientSize = new System.Drawing.Size(862, 455);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.NamePanel);
@@ -166,6 +179,7 @@ namespace form_pratice
             this.NamePanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,5 +196,6 @@ namespace form_pratice
         private System.Windows.Forms.FlowLayoutPanel ColumnPanel;
         private System.Windows.Forms.FlowLayoutPanel DltBtnPanel;
         private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -40,3 +40,4 @@ C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\ob
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.csproj.CoreCompileInputs.cache
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.exe
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.pdb
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.ColumnFocus.resources
