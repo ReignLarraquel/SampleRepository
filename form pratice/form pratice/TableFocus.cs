@@ -13,15 +13,21 @@ namespace form_pratice
 {
     public partial class TableFocus : Form
     {
-        public string columnname = "";
-        public string valuesname = "";
+        public string columnname = ""; //a string to handle all columnnames
+        public string valuesname = ""; // string to handle all values
+
         SqlDataAdapter adpt;
         DataTable dt;
+
         public static string NameColumn = "";
-        public static int j = 0;
-        public int i = 0;
+
+        public static int j = 0; // count of all recently added columns
+        public int i = 0; // count of all columns
+        public int ix1 = 0; // max count of all columns (for the input)
+
         public TextBox[] textBoxes1; //array of textbox
         public TextBox[] textBoxes2;
+
         private int amount = 100; // The amount of new values allowed per adding
 
         public TableFocus()
@@ -33,11 +39,11 @@ namespace form_pratice
         private void Panel_Text_Button()
         {
             textBoxes1 = new TextBox[amount];//max amount of textbox
-            textBoxes2 = new TextBox[amount];
+            textBoxes2 = new TextBox[amount];//max amount of textbox
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // goes back
         {
             Form1 aform = new Form1();
             aform.Show();
@@ -46,7 +52,8 @@ namespace form_pratice
 
         private void TableFocus_Load(object sender, EventArgs e) 
         { // when loading it sets everything ready for the user mostly for loading up their previous columns
-            i = 0;
+            i = 0; // resets all values
+            ix1 = 0;
             j = 0;
             button3.Enabled = false;
             string tablename = Form1.NameData;
@@ -64,11 +71,13 @@ namespace form_pratice
                 textBoxes1[j].Name = "txt_" + (j + 1).ToString();
                 textBoxes1[j].Size = new System.Drawing.Size(140, 20);
                 textBoxes1[j].ReadOnly = true;
+                if (textBoxes1[j].Name == "txt_1") textBoxes1[j].Enabled = false;
                 ColumnPanel.Controls.Add(textBoxes1[j]);
                 textBoxes1[j].DoubleClick += new System.EventHandler(this.columnDC);
                 textBoxes2[j] = new TextBox();
                 textBoxes2[j].Name = "txtvalue_" + (j + 1).ToString();
                 textBoxes2[j].Size = new System.Drawing.Size(200, 20);
+                if (textBoxes2[j].Name == "txtvalue_1") textBoxes2[j].Enabled = false;
                 ValuesPanel.Controls.Add(textBoxes2[j]);
                 j++;
                 Button button = new Button();
@@ -76,10 +85,40 @@ namespace form_pratice
                 button.Name = "btnDelete_" + (j);
                 button.Text = "X";
                 button.Click += new System.EventHandler(this.sqlbtnDelete_Click);
+                if (button.Name == "btnDelete_1") button.Enabled = false;
                 DltBtnPanel.Controls.Add(button);
             }
             reader.Close();
             showdata();
+
+            SqlCommand cmd = new SqlCommand(columns, connection);
+            var reader2 = cmd.ExecuteReader();
+            while (reader2.Read())
+            {
+                ix1++;
+            }
+            reader2.Close();
+
+            var reader3 = cmd.ExecuteReader();
+            string[] tableColumnName = new string[100];
+            while (reader3.Read())
+            {
+                if (i == ix1-1)
+                {
+                    tableColumnName[i] = reader3["COLUMN_NAME"].ToString();
+                    columnname += "[" + tableColumnName[i] + "]";
+                    i++;
+                }
+                if (i < ix1)
+                {
+                    tableColumnName[i] = reader3["COLUMN_NAME"].ToString();
+                    columnname += "[" + tableColumnName[i] + "],";
+                    i++;
+                    if (columnname == "[ID],") columnname = "";
+                }
+            }
+            reader3.Close();
+            connection.Close();
 
         }
         // a button to add a textbox and a delete textbox button
@@ -112,17 +151,11 @@ namespace form_pratice
             ColumnPanel.Refresh();
             DltBtnPanel.Refresh();
         }
+
+
         //a func on when a column is double clicked
         public void columnDC(object sender, EventArgs e)
         {
-            ColumnFocus cFocus = new ColumnFocus();
-            TextBox textBoxes = (sender as TextBox);
-            var text = (sender as TextBox).Text;
-            string tablename = Form1.NameData;
-
-            ColumnFocus cfocus = new ColumnFocus();
-            cfocus.Show();
-            this.Close();
 
         }
 
@@ -150,12 +183,12 @@ namespace form_pratice
             SqlConnection connection = new SqlConnection(connectionString);//connectiong command sql
             connection.Open();//connectiong open
             var dltcolumn = new SqlCommand(columnsdlt, connection);
-            dltcolumn.ExecuteReader();
-            ColumnPanel.Controls.Remove(ColumnPanel.Controls.Find(textBoxes1[index].Name, true)[0]); //Find the TextBox using Index and remove it.
-            ValuesPanel.Controls.Remove(ValuesPanel.Controls.Find(textBoxes2[index].Name, true)[0]);
+            ColumnPanel.Controls.Remove(ColumnPanel.Controls.Find(textBoxes1[index-1].Name, true)[0]); //Find the TextBox using Index and remove it.
+            ValuesPanel.Controls.Remove(ValuesPanel.Controls.Find(textBoxes2[index-1].Name, true)[0]);
             DltBtnPanel.Controls.Remove(button); //Remove the Button.
             i = 0;
             j--;
+            dltcolumn.ExecuteReader();
             connection.Close();//closes connection
 
             //refresh the data stored inside
@@ -166,30 +199,48 @@ namespace form_pratice
             showdata();
         }
 
-        private void button3_Click(object sender, EventArgs e) // adds a column in the data base
+        private void button3_Click(object sender, EventArgs e) // adds a column in the database
         {
-            //counts how many columns are already saved to see where it would start adding
+            i = 0;
+            ix1 = 0;
             string tablename = Form1.NameData;
-            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
-            SqlConnection connection = new SqlConnection(connect);
-            connection.Open();
-
             string columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tablename + "'ORDER BY ORDINAL_POSITION";
+            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
             SqlCommand cmd = new SqlCommand(columns, connection);
-            var reader = cmd.ExecuteReader();
             string[] tableColumnName = new string[100];
-            while (reader.Read())
+            var reader2 = cmd.ExecuteReader();
+            while (reader2.Read())
             {
-                tableColumnName[i] = reader["COLUMN_NAME"].ToString();
-                i++;
+                ix1++;
             }
-            reader.Close();
+            reader2.Close();
+
+            var reader3 = cmd.ExecuteReader();
+            while (reader3.Read())
+            {
+                if (i == ix1 - 1)
+                {
+                    tableColumnName[i] = reader3["COLUMN_NAME"].ToString();
+                    columnname += "[" + tableColumnName[i] + "]";
+                    i++;
+                }
+                if (i < ix1)
+                {
+                    tableColumnName[i] = reader3["COLUMN_NAME"].ToString();
+                    columnname += "[" + tableColumnName[i] + "],";
+                    if (columnname == "[ID],") columnname = "";
+                    i++;
+                }
+            }
+            reader3.Close();
 
             bool finish = false;
             //adds in the column where it starts right after i(the count of the already added columns)
             for (int n = i; n < j; n++)
             {
-                if (textBoxes1[n].Text == string.Empty) MessageBox.Show("Values must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (textBoxes1[n].Text == string.Empty) MessageBox.Show("Columns must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
                     string alterTable = "ALTER TABLE [" + tablename + "] ADD [" + textBoxes1[n].Text + "] TEXT";
@@ -202,6 +253,7 @@ namespace form_pratice
             }
             if (finish)
             {
+                connection.Close();
                 MessageBox.Show("Columns successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 TableFocus tfocus = new TableFocus();
                 tfocus.Show();
@@ -222,50 +274,6 @@ namespace form_pratice
             connection.Close();
         }
         // a button to save data written in the gridview to be placed in the database
-        private void button4_Click(object sender, EventArgs e)
-        {
-            i = 0;
-            //gets the amount of columns again 
-            string tablename = Form1.NameData;
-            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
-            SqlConnection connection = new SqlConnection(connect);
-            connection.Open();
-
-            string columns = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '" + tablename + "'ORDER BY ORDINAL_POSITION";
-            SqlCommand cmd = new SqlCommand(columns, connection);
-            var reader = cmd.ExecuteReader();
-            string[] tableColumnName = new string[100];
-            while (reader.Read())
-            {
-                tableColumnName[i] = reader["COLUMN_NAME"].ToString();
-                i++;
-            }
-            reader.Close();
-            // collects all the values written
-            for (int c = 0; c<= dataGridView1.Rows.Count-1; c++)
-            {
-                for (int r = 0; r <= i-2; r++)
-                {
-                    valuesname += "[" + dataGridView1.Rows[c].Cells[r].Value + "],";
-                }
-            }
-
-            //adds the values in a multi dimentional array way
-            for (int c = 0; c <= dataGridView1.Rows.Count-1; c++)
-            {
-                for (int r = 0; r <= i - 2; r++)
-                {
-                    string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
-                    SqlConnection con = new SqlConnection(connectionString);
-                    string addvalues = "INSERT INTO [" + tablename + "] (" + columnname + ") VALUES ('" + valuesname + "')";
-                    SqlCommand command = new SqlCommand(addvalues, connection);
-                    command.ExecuteNonQuery();
-                }
-            }
-            MessageBox.Show("Values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            connection.Close();
-            showdata();
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -274,14 +282,69 @@ namespace form_pratice
 
         private void dataGridView1_DoubleClick(object sender, EventArgs e)
         {
-            ColumnFocus cfocus = new ColumnFocus();
-            cfocus.Show();
+
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            valuesname = "";
+            bool finished = false;
+            i = 0;
+            string tablename = Form1.NameData;
+            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+            SqlConnection connection = new SqlConnection(connect);
+            connection.Open();
+
+
+            if (textBoxes2[2].Text != string.Empty) 
+            {
+                for (int c = 0; c < ix1; c++)
+                {
+                    if (i == ix1 - 1)
+                    {
+                        valuesname += "'" + textBoxes2[i].Text + "'";
+                        i++;
+                        finished = true;
+                    }
+                    if (i < ix1)
+                    {
+                        valuesname += "'" + textBoxes2[i].Text + "',";
+                        if (valuesname == "'" + textBoxes2[0].Text + "',") valuesname = "";
+                        i++;
+                    }
+                }
+                if (finished)
+                {
+                    string addvalues = "INSERT INTO [" + tablename + "] (" + columnname + ") VALUES (" + valuesname + ")";
+                    SqlCommand command = new SqlCommand(addvalues, connection);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Values successfully added", "Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    connection.Close();
+                    TableFocus tfocus = new TableFocus();
+                    tfocus.Show(); 
+                    this.Close();
+                }
+            }
+            else MessageBox.Show("Value1 must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void ValuesPanel_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e) // edit button
+        {
+            EditValue aform = new EditValue();
+            aform.Show();
             this.Close();
         }
 
-        private void ValuesPanel_Paint(object sender, PaintEventArgs e)
+        private void button6_Click(object sender, EventArgs e) // delete button
         {
-
+            DeleteRow aform = new DeleteRow();
+            aform.Show();
+            this.Close();
         }
     }
 }   

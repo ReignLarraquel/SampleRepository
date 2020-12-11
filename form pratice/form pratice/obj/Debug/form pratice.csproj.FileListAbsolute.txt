@@ -41,3 +41,5 @@ C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\ob
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.exe
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form pratice.pdb
 C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.ColumnFocus.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.EditValue.resources
+C:\Users\SHAO ESTEBAN\Desktop\Luis\SampleRepository\form pratice\form pratice\obj\Debug\form_pratice.DeleteRow.resources

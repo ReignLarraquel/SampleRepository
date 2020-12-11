@@ -101,5 +101,10 @@ namespace form_pratice
             connection.Close();
             this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
