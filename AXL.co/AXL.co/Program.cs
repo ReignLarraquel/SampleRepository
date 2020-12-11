@@ -16,8 +16,6 @@ namespace AXL.co
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SplashScreen aSplashForm = new SplashScreen();
-            aSplashForm.ShowDialog();
             Application.Run(new MainForm());
         }
     }
