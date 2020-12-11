@@ -15,6 +15,9 @@ namespace form_pratice
     {
         public static int i = 0;// this is for the number of textbox
         public static string NameData = "";
+        SqlDataAdapter adpt;
+        DataTable dt;
+
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +41,7 @@ namespace form_pratice
                 textBox.Text = reader["Table_Name"].ToString();//The text inside the textbox
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
                 textBox.DoubleClick += TextBox_DoubleClick;
+                textBox.Click += TextBox_Click;
                 flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel
             }
             reader.Close();//closes reader
@@ -74,6 +78,19 @@ namespace form_pratice
             NameData = text.ToString();//Saves the thing that was double clicked
             aform.Show();
             this.Hide();
+        }
+        public void TextBox_Click(object sender, EventArgs e)
+        {
+            var text = (sender as TextBox).Text;
+            string tablename = text.ToString();
+            string connect = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+            SqlConnection connection = new SqlConnection(connect);
+            connection.Open();
+            adpt = new SqlDataAdapter("SELECT * FROM [" + tablename + "]", connection);
+            dt = new DataTable();
+            adpt.Fill(dt);
+            dataGridView1.DataSource = dt;
+            connection.Close();
         }
     }
 }

@@ -90,19 +90,23 @@ namespace form_pratice
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string tablename = Form1.NameData;
-            string updatevalue = "UPDATE [" + tablename + "] SET [" + comboBox1.Text.ToString() + "] = '" + textBox1.Text.ToString() + "' WHERE CONVERT(VARCHAR,[ID]) = '" + comboBox3.Text.ToString()+"'";
-            //string updatevalue = "UPDATE [" + tablename + "] SET [" + comboBox1.Text.ToString() + "] = '" + textBox1.Text.ToString() + "' WHERE CONVERT(VARCHAR,[2]) = '11'";
-            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand(updatevalue, connection);
-            connection.Open();
-            cmd.ExecuteNonQuery();
-            connection.Close();
-            MessageBox.Show("Value has been edited", "Edited value", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            TableFocus tfocus = new TableFocus();
-            tfocus.Show();
-            this.Close();
+            if(comboBox1.Text != string.Empty && textBox1.Text != string.Empty && comboBox3.Text != string.Empty)
+            { 
+                string tablename = Form1.NameData;
+                string updatevalue = "UPDATE [" + tablename + "] SET [" + comboBox1.Text.ToString() + "] = '" + textBox1.Text.ToString() + "' WHERE CONVERT(VARCHAR,[ID]) = '" + comboBox3.Text.ToString() + "'";
+                //string updatevalue = "UPDATE [" + tablename + "] SET [" + comboBox1.Text.ToString() + "] = '" + textBox1.Text.ToString() + "' WHERE CONVERT(VARCHAR,[2]) = '11'";
+                string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+                SqlConnection connection = new SqlConnection(connectionString);
+                SqlCommand cmd = new SqlCommand(updatevalue, connection);
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Value has been edited", "Edited value", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TableFocus tfocus = new TableFocus();
+                tfocus.Show();
+                this.Close();
+            }
+            else MessageBox.Show("Values Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

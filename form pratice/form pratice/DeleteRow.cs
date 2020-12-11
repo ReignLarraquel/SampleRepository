@@ -69,19 +69,22 @@ namespace form_pratice
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            string tablename = Form1.NameData;
-            string dltrow = "DELETE FROM " + tablename + " WHERE CONVERT(VARCHAR, [" + tableColumnName[0] + "]) = '" + comboBox1.Text +"'";
-            string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand(dltrow, connection);
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
-            MessageBox.Show("Row hasa been deleted", "Row Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            TableFocus tfocus = new TableFocus();
-            tfocus.Show();
-            this.Close();
-
+            if(comboBox1.Text != string.Empty)
+            { 
+                string tablename = Form1.NameData;
+                string dltrow = "DELETE FROM " + tablename + " WHERE CONVERT(VARCHAR, [" + tableColumnName[0] + "]) = '" + comboBox1.Text + "'";
+                string connectionString = "Data Source=SQL5053.site4now.net;Initial Catalog=DB_A6BCB0_tabledata;User Id=DB_A6BCB0_tabledata_admin;Password=marc4lyf";
+                SqlConnection connection = new SqlConnection(connectionString);
+                SqlCommand command = new SqlCommand(dltrow, connection);
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+                MessageBox.Show("Row hasa been deleted", "Row Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                TableFocus tfocus = new TableFocus();
+                tfocus.Show();
+                this.Close();
+            }
+            else MessageBox.Show("Values Missing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void button2_Click(object sender, EventArgs e)

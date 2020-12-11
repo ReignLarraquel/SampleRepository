@@ -15,6 +15,7 @@ namespace form_pratice
     {
         public string columnname = ""; //a string to handle all columnnames
         public string valuesname = ""; // string to handle all values
+        public string text = "";
 
         SqlDataAdapter adpt;
         DataTable dt;
@@ -24,6 +25,7 @@ namespace form_pratice
         public static int j = 0; // count of all recently added columns
         public int i = 0; // count of all columns
         public int ix1 = 0; // max count of all columns (for the input)
+        public int k = 0; // for unique columns
 
         public TextBox[] textBoxes1; //array of textbox
         public TextBox[] textBoxes2;
@@ -64,20 +66,20 @@ namespace form_pratice
 
             var cmdTable = new SqlCommand(columns, connection);
             SqlDataReader reader = cmdTable.ExecuteReader();
-            while (reader.Read())
+            while (reader.Read()) // adds the columns in the right areas
             {
                 textBoxes1[j] = new TextBox();
                 textBoxes1[j].Text = reader["COLUMN_NAME"].ToString();
                 textBoxes1[j].Name = "txt_" + (j + 1).ToString();
                 textBoxes1[j].Size = new System.Drawing.Size(140, 20);
-                textBoxes1[j].ReadOnly = true;
+                textBoxes1[j].ReadOnly = true; // makes ID not usable
                 if (textBoxes1[j].Name == "txt_1") textBoxes1[j].Enabled = false;
                 ColumnPanel.Controls.Add(textBoxes1[j]);
                 textBoxes1[j].DoubleClick += new System.EventHandler(this.columnDC);
                 textBoxes2[j] = new TextBox();
                 textBoxes2[j].Name = "txtvalue_" + (j + 1).ToString();
                 textBoxes2[j].Size = new System.Drawing.Size(200, 20);
-                if (textBoxes2[j].Name == "txtvalue_1") textBoxes2[j].Enabled = false;
+                if (textBoxes2[j].Name == "txtvalue_1") textBoxes2[j].Enabled = false; //makes ID values not usable
                 ValuesPanel.Controls.Add(textBoxes2[j]);
                 j++;
                 Button button = new Button();
@@ -85,7 +87,7 @@ namespace form_pratice
                 button.Name = "btnDelete_" + (j);
                 button.Text = "X";
                 button.Click += new System.EventHandler(this.sqlbtnDelete_Click);
-                if (button.Name == "btnDelete_1") button.Enabled = false;
+                if (button.Name == "btnDelete_1") button.Enabled = false; // makes the ID delete button not usable
                 DltBtnPanel.Controls.Add(button);
             }
             reader.Close();
@@ -238,10 +240,32 @@ namespace form_pratice
 
             bool finish = false;
             //adds in the column where it starts right after i(the count of the already added columns)
+            bool check = false;
             for (int n = i; n < j; n++)
             {
+                reader3 = cmd.ExecuteReader();
+                while (reader3.Read())
+                {
+                    if (k == ix1 - 1)
+                    {
+                        tableColumnName[k] = reader3["COLUMN_NAME"].ToString();
+                        text = tableColumnName[k].ToString();
+                        if (textBoxes1[n].Text == text) MessageBox.Show("Columns must have unique names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); check = false;
+                        if (textBoxes1[n].Text != text) check = true;
+                        i++;
+                    }
+                    if (k < ix1)
+                    {
+                        tableColumnName[k] = reader3["COLUMN_NAME"].ToString();
+                        text = tableColumnName[k].ToString();
+                        if (textBoxes1[n].Text == text) MessageBox.Show("Columns must have unique names", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); check = false;
+                        if(textBoxes1[n].Text != text) check = true;
+                        i++;
+                    }
+                }
+                reader3.Close();
                 if (textBoxes1[n].Text == string.Empty) MessageBox.Show("Columns must not be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else
+                else if (check)
                 {
                     string alterTable = "ALTER TABLE [" + tablename + "] ADD [" + textBoxes1[n].Text + "] TEXT";
                     SqlParameter param1 = new SqlParameter(tablename, textBoxes1[n].Text);

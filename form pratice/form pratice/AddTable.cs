@@ -166,6 +166,7 @@ Never gonna tell a lie and hurt you */
                 textBox.Text = textBox1.Text;//The name of the table name
                 textBox.Name = "textBox" + i.ToString();// The property name of the textbox
                 textBox.DoubleClick += _form.TextBox_DoubleClick;
+                textBox.Click += _form.TextBox_Click;
                 _form.flowLayoutPanel1.Controls.Add(textBox);// adds the textbox in the flow layout panel in form1
                 connection.Close();
             this.Close();
